@@ -12,6 +12,7 @@ export default class PageA extends React.Component{
             <div>
             <Head title="PageA"/>
                 PageA页面
+                <span style={{color:'red'}}>111111</span>
             </div>
         );
     }

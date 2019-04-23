@@ -1,4 +1,5 @@
 const withLess = require('@zeit/next-less');
+const withCss = require('@zeit/next-css');
 const withTypescript = require('@zeit/next-typescript');
 const tsImportPluginFactory = require('ts-import-plugin');
 const withLessExcludeAntd  = require('./next-less.config.js');
@@ -10,7 +11,11 @@ if (typeof require !== 'undefined') {
   require.extensions['.less'] = file => {}
 }
 
-module.exports = withTypescript(withLessExcludeAntd({
+if (typeof require !== 'undefined') {
+  require.extensions['.css'] = file => {}
+}
+
+module.exports = withTypescript(withCss(withLessExcludeAntd({
   cssModules: true,
   distDir: "build",
   cssLoaderOptions: {
@@ -21,5 +26,4 @@ module.exports = withTypescript(withLessExcludeAntd({
     javascriptEnabled: true,
     modifyVars: theme
   }
-}))
-// _.flow([withTypescript,withLess,withCss])({cssModules: true},webpackConfig);
+})))

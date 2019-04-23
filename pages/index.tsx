@@ -5,7 +5,7 @@ import styles from "./index.less";
 import { Button } from "antd";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
-import { withRouter, WithRouterProps } from "next/router";
+import { withRouter} from "next/router";
 
 @observer
 class Home extends React.Component<any, any> {
@@ -20,7 +20,9 @@ class Home extends React.Component<any, any> {
 
   goToPageA = () => {
     console.log("111111111111");
-    this.props.router.push("/demo/pageA?id=10");
+    // this.props.router.push("/demo/pageA?id=10");
+    // window.history.pushState(null,'','/demo/pageA?id=10')
+    window.location.href='/demo/pageA?id=10';
   };
 
   render() {
@@ -34,9 +36,9 @@ class Home extends React.Component<any, any> {
           </p>
           <h1>hahahdha</h1>
           <h1>22222</h1>
-          <h1>22222</h1>
+          <span style={{color:'red'}}>111111</span>
           {/* <a href="/demo/pageA?id=10"> */}
-            <Button type="primary" size="large" onClick={this.goToPageA}>
+            <Button type="primary" size="large"  onClick={this.goToPageA}>
               1111
             </Button>
           {/* </a> */}
